@@ -10,13 +10,14 @@ var solution = Math.floor(Math.random() * 100) + 1;
 // Décommentez temporairement cette ligne pour mieux vérifier le programme
 //console.log("(La solution est " + solution + ")");
 
-// TODO : complétez le programme
 // initialisation
 var proposition=-solution;
 var essai=0;
 
-var ESSAI_MAX=6; //nombre maximum d'essai
+var essaiMax=6; //nombre maximum d'essai
 
+ 
+loopWhile:
 do {             
             proposition = Number(prompt("Entrez un nombre entre 1 et 100:"));
 
@@ -28,17 +29,25 @@ do {
             {
                 console.log(proposition+" est trop grand.");
             }
-
-            else
-            {
-              console.log("Bravo ! La solution était "+solution+".");
-              exit;
+            else if (Number.isNaN(proposition)||proposition<1||proposition>100){
+                alert("Attention ! Veuillez entrer un nombre.");
+                            
             }
-        
+            else if (proposition<1||proposition>100){
+                alert("Attention ! Veuillez entrer un nombre compris entre 1 et 100.");
+            }
+
     essai++;
         
     
-} while(essai<ESSAI_MAX &&  proposition!=solution);
+} while(essai<essaiMax &&  proposition!==solution);
 
- 
-console.log("Perdu ... La solution était "+solution+".");
+if(proposition===solution)
+{
+   console.log("Bravo ! La solution était "+solution+".");
+}
+
+else
+{
+     console.log("Perdu ... La solution était "+solution+".");
+} 
